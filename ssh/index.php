@@ -45,4 +45,15 @@ $result = $ssh->exec("cd domains/aldaarerp.com/public_html && git pull origin ma
 $ssh->exec("cd domains/aldaarerp.com/public_html && git stash pop");
 
 echo "Pull Result:\n" . $result . "\n";
+// Add any changes
+$result = $ssh->exec("cd domains/aldaarerp.com/public_html && git add .");
+echo "Add Result:\n" . $result . "\n";
+
+// Commit changes with an IP address in the message
+$result = $ssh->exec("cd domains/aldaarerp.com/public_html && git commit -m 'auto push - $ip'");
+echo "Commit Result:\n" . $result . "\n";
+
+// Push changes to the current branch
+$result = $ssh->exec("cd domains/aldaarerp.com/public_html && git push origin $branch");
+echo "Push Result:\n" . $result . "\n";
 ?>

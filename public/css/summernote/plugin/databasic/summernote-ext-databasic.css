@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .ext-databasic {
 	position: relative;
 	display: block;
@@ -14,3 +15,21 @@
 	font-size: 1.2em;
 	margin: 0;
 }
+=======
+.ext-databasic {
+	position: relative;
+	display: block;
+	min-height: 50px;
+	background-color: cyan;
+	text-align: center;
+	padding: 20px;
+	border: 1px solid white;
+	border-radius: 10px;
+}
+
+.ext-databasic p {
+	color: white;
+	font-size: 1.2em;
+	margin: 0;
+}
+>>>>>>> f39eb1854d2944c0ca39f812f88e829928281819

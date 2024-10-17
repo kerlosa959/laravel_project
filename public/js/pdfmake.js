@@ -14121,14 +14121,22 @@
 /* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 	module.exports = function() { throw new Error("define cannot be used indirect"); };
+=======
+	module.exports = function() { throw new Error("define cannot be used indirect"); };
+>>>>>>> f39eb1854d2944c0ca39f812f88e829928281819
 
 
 /***/ },
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
+=======
+	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
+>>>>>>> f39eb1854d2944c0ca39f812f88e829928281819
 
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
@@ -14136,6 +14144,7 @@
 /* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 	module.exports = function(module) {
 		if(!module.webpackPolyfill) {
 			module.deprecate = function() {};
@@ -14146,6 +14155,18 @@
 		}
 		return module;
 	}
+=======
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+>>>>>>> f39eb1854d2944c0ca39f812f88e829928281819
 
 
 /***/ },

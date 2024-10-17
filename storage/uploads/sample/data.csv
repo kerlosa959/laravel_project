@@ -77,8 +77,13 @@
 49.36.83.154,2023-12-15,11:17:37 UTC,["necessary"],desktop,en,Chrome,Linux,India,GJ,Gujarat,Surat,394101,21.1888,72.8293
 49.36.83.154,2023-12-15,12:10:54 UTC,["necessary"],desktop,en,Chrome,Linux,India,GJ,Gujarat,Surat,394101,21.1888,72.8293
 49.36.83.154,2023-12-15,14:59:52 UTC,["necessary"],desktop,en,Chrome,Linux,India,GJ,Gujarat,Surat,394101,21.1888,72.8293
+<<<<<<< HEAD
 49.36.83.154,2024-01-02,13:50:06 UTC,["necessary"],desktop,en,Chrome,Windows,India,GJ,Gujarat,Surat,394101,21.1888,72.8293
 49.36.83.154,2024-01-02,13:51:22 UTC,["necessary"],desktop,en,Chrome,Windows,India,GJ,Gujarat,Surat,394101,21.1888,72.8293
+=======
+49.36.83.154,2024-01-02,13:50:06 UTC,["necessary"],desktop,en,Chrome,Windows,India,GJ,Gujarat,Surat,394101,21.1888,72.8293
+49.36.83.154,2024-01-02,13:51:22 UTC,["necessary"],desktop,en,Chrome,Windows,India,GJ,Gujarat,Surat,394101,21.1888,72.8293
+>>>>>>> f39eb1854d2944c0ca39f812f88e829928281819
 49.36.83.154,2024-01-03,07:13:08 UTC,["necessary"],desktop,en,Chrome,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
 49.36.83.154,2024-01-03,09:07:28 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
 49.36.83.154,2024-01-03,11:40:22 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
@@ -96,10 +101,17 @@
 49.36.83.154,2024-01-24,04:46:24 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
 49.36.83.154,2024-01-25,11:21:19 UTC,["necessary"],desktop,en,Chrome,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
 49.36.83.154,2024-01-31,06:08:14 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
+<<<<<<< HEAD
 49.36.83.154,2024-02-01,12:20:00 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
 49.36.83.154,2024-02-05,14:10:27 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
 49.36.83.154,2024-02-09,08:48:57 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
 49.36.83.154,2024-02-12,06:42:21 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
+=======
+49.36.83.154,2024-02-01,12:20:00 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
+49.36.83.154,2024-02-05,14:10:27 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
+49.36.83.154,2024-02-09,08:48:57 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
+49.36.83.154,2024-02-12,06:42:21 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
+>>>>>>> f39eb1854d2944c0ca39f812f88e829928281819
 49.36.83.154,2024-02-17,12:24:40 UTC,["necessary"],desktop,en,Firefox,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
 49.36.83.154,2024-02-17,13:25:52 UTC,["necessary"],mobile,en,Safari,iOS,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
 49.36.83.154,2024-02-19,09:31:55 UTC,["necessary"],desktop,en,Chrome,Windows,India,GJ,Gujarat,Surat,395007,21.1888,72.8293
