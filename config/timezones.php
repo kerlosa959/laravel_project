@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
 
 return [
@@ -403,7 +402,6 @@ return [
 	'Asia/Anadyr' => '(GMT+12:00) Asia/Anadyr (Anadyr Time)',
 	'Asia/Kamchatka' => '(GMT+12:00) Asia/Kamchatka (Petropavlovsk-Kamchatski Time)'
 ];
-=======
 <?php 
 
 return [
@@ -808,4 +806,3 @@ return [
 	'Asia/Anadyr' => '(GMT+12:00) Asia/Anadyr (Anadyr Time)',
 	'Asia/Kamchatka' => '(GMT+12:00) Asia/Kamchatka (Petropavlovsk-Kamchatski Time)'
 ];
->>>>>>> f39eb1854d2944c0ca39f812f88e829928281819
