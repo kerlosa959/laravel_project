@@ -402,7 +402,6 @@ return [
 	'Asia/Anadyr' => '(GMT+12:00) Asia/Anadyr (Anadyr Time)',
 	'Asia/Kamchatka' => '(GMT+12:00) Asia/Kamchatka (Petropavlovsk-Kamchatski Time)'
 ];
-<?php 
 
 return [
     'America/Adak' => '(GMT-10:00) America/Adak (Hawaii-Aleutian Standard Time)',
