@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
 
 namespace Milon\Barcode;
@@ -49,8 +48,7 @@ class BarcodeServiceProvider extends ServiceProvider {
     }
 
 }
-=======
-<?php 
+
 
 namespace Milon\Barcode;
 
@@ -100,4 +98,3 @@ class BarcodeServiceProvider extends ServiceProvider {
     }
 
 }
->>>>>>> f39eb1854d2944c0ca39f812f88e829928281819
