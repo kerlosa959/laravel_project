@@ -233,27 +233,24 @@
 <!--------------------- End User Managaement System----------------------------------->
 <!--------------------- Start Project ----------------------------------->
 
-@if (!empty($userPlan) && $userPlan->project == 1)
+@if (!empty($userPlan) &&  $userPlan->project == 1)
     @if (Gate::check('manage project'))
-        <li class="dash-item dropdown {{ Request::segment(1) == 'project' || Request::segment(1) == 'bugs-report' || Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' || Request::segment(1) == 'calendar' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'projects' || Request::segment(1) == 'project_report' ? 'active dash-trigger' : '' }}">
-            <a href="javascript:void(0);" class="dash-link dropdown-toggle">
-                <span class="dash-micon"><i class="ti ti-project"></i></span>
-                <span class="dash-mtext">{{ __('Projects') }}</span>
-                <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
-            </a>
-            <ul class="dash-submenu">
-                <li class="dash-item {{ Request::segment(1) == 'project' ? 'active' : '' }}">
-                    <a class="dash-link" href="{{ route('projects.index') }}">{{ __('All Projects') }}</a>
-                </li>
-                <li class="dash-item {{ Request::segment(1) == 'bugs-report' ? 'active' : '' }}">
-                    <a class="dash-link" href="{{ route('bugs.report') }}">{{ __('Bugs Report') }}</a>
-                </li>
-                <!-- أضف المزيد من العناصر هنا -->
-            </ul>
-        </li>
-    @endif
-@endif
-
+        <li
+            class="dash-item dash-hasmenu
+                                    {{ Request::segment(1) == 'project' ||
+                                    Request::segment(1) == 'bugs-report' ||
+                                    Request::segment(1) == 'bugstatus' ||
+                                    Request::segment(1) == 'project-task-stages' ||
+                                    Request::segment(1) == 'calendar' ||
+                                    Request::segment(1) == 'timesheet-list' ||
+                                    Request::segment(1) == 'taskboard' ||
+                                    Request::segment(1) == 'timesheet-list' ||
+                                    Request::segment(1) == 'taskboard' ||
+                                    Request::segment(1) == 'project' ||
+                                    Request::segment(1) == 'projects' ||
+                                    Request::segment(1) == 'project_report'
+                                        ? 'active dash-trigger'
+                                        : '' }}">
            <li class="dash-item dropdown">
             <a href="javascript:void(0);" class="dash-link dropdown-toggle">
                 <span class="dash-micon"><i class="ti ti-share"></i></span>
