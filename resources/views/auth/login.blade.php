@@ -89,11 +89,11 @@
             <div class="d-grid">
                 {{ Form::submit(__('Login'), ['class' => 'btn btn-primary mt-2', 'id' => 'saveBtn']) }}
             </div>
-            @if ($settings['enable_signup'] == 'on')
+            <!-- @if ($settings['enable_signup'] == 'on')
                 <p class="my-4 text-center">{{ __("Don't have an account?") }}
                     <a href="{{ route('register',$lang) }}" class="text-primary">{{__('Register')}}</a>
                 </p>
-            @endif
+            @endif -->
             @if ($settings['recaptcha_module'] == 'on')
                 <div class="form-group col-lg-12 col-md-12 mt-3">
                      {!! NoCaptcha::display($settings['cust_darklayout']=='on' ? ['data-theme' => 'dark'] : []) !!}
