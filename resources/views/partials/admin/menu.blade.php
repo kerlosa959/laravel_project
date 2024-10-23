@@ -190,7 +190,7 @@
         <ul class="dash-submenu">
             @can('manage user')
                 <li
-                    class="dash-item {{ Request::route()->getName() == 'users.index' || Request::route()->getName() == 'users.create' || Request::route()->getName() == 'users.edit' || Request::route()->getName() == 'user.userlog' ? ' active' : '' }}">
+                    class="dropdown-item {{ Request::route()->getName() == 'users.index' || Request::route()->getName() == 'users.create' || Request::route()->getName() == 'users.edit' || Request::route()->getName() == 'user.userlog' ? ' active' : '' }}">
                     <a class="dash-link" href="{{ route('users.index') }}">{{ __('User') }}</a>
                 </li>
             @endcan
@@ -233,60 +233,97 @@
 <!--------------------- End User Managaement System----------------------------------->
 <!--------------------- Start Project ----------------------------------->
 
-@if (!empty($userPlan) && $userPlan->project == 1)
+@if (!empty($userPlan) &&  $userPlan->project == 1)
     @if (Gate::check('manage project'))
-        <li class="dash-item dropdown {{ Request::segment(1) == 'project' || Request::segment(1) == 'bugs-report' || Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' || Request::segment(1) == 'calendar' || Request::segment(1) == 'timesheet-list' || Request::segment(1) == 'taskboard' || Request::segment(1) == 'projects' || Request::segment(1) == 'project_report' ? 'active dash-trigger' : '' }}">
-            <a href="javascript:void(0);" class="dash-link dropdown-toggle">
-                <span class="dash-micon"><i class="ti ti-share"></i></span>
-                <span class="dash-mtext">{{ __('Project') }}</span>
-                <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
-            </a>
+        <li
+            class="dash-item dash-hasmenu
+                                    {{ Request::segment(1) == 'project' ||
+                                    Request::segment(1) == 'bugs-report' ||
+                                    Request::segment(1) == 'bugstatus' ||
+                                    Request::segment(1) == 'project-task-stages' ||
+                                    Request::segment(1) == 'calendar' ||
+                                    Request::segment(1) == 'timesheet-list' ||
+                                    Request::segment(1) == 'taskboard' ||
+                                    Request::segment(1) == 'timesheet-list' ||
+                                    Request::segment(1) == 'taskboard' ||
+                                    Request::segment(1) == 'project' ||
+                                    Request::segment(1) == 'projects' ||
+                                    Request::segment(1) == 'project_report'
+                                        ? 'active dash-trigger'
+                                        : '' }}">
+            <a href="#!" class="dash-link"><span class="dash-micon"><i
+                        class="ti ti-share"></i></span><span
+                    class="dash-mtext">{{ __('Project') }}</span><span class="dash-arrow"><i
+                        data-feather="chevron-right"></i></span></a>
             <ul class="dash-submenu">
+               
                 @can('manage project')
-                    <li class="dash-item dropdown {{ Request::segment(1) == 'project' || Request::route()->getName() == 'projects.list' || Request::route()->getName() == 'projects.index' || Request::route()->getName() == 'projects.show' || request()->is('projects/*') ? 'active' : '' }}">
+                    <li
+                        class="dash-item  {{ Request::segment(1) == 'project' || Request::route()->getName() == 'projects.list' || Request::route()->getName() == 'projects.list' || Request::route()->getName() == 'projects.index' || Request::route()->getName() == 'projects.show' || request()->is('projects/*') ? 'active' : '' }}">
                         <a class="dash-link" href="{{ route('projects.index') }}">{{ __('Projects') }}</a>
                     </li>
                 @endcan
                 @can('manage project task')
-                    <li class="dash-item dropdown {{ request()->is('taskboard*') ? 'active' : '' }}">
-                        <a class="dash-link" href="{{ route('taskBoard.view', 'list') }}">{{ __('Tasks') }}</a>
+                    <li class="dash-item {{ request()->is('taskboard*') ? 'active' : '' }}">
+                        <a class="dash-link"
+                            href="{{ route('taskBoard.view', 'list') }}">{{ __('Tasks') }}</a>
                     </li>
                 @endcan
                 @can('manage timesheet')
-                    <li class="dash-item dropdown {{ request()->is('timesheet-list*') ? 'active' : '' }}">
+                    <li class="dash-item {{ request()->is('timesheet-list*') ? 'active' : '' }}">
                         <a class="dash-link" href="{{ route('timesheet.list') }}">{{ __('Timesheet') }}</a>
                     </li>
                 @endcan
+                <!-- @can('manage bug report')
+                    <li class="dash-item {{ request()->is('bugs-report*') ? 'active' : '' }}">
+                        <a class="dash-link" href="{{ route('bugs.view', 'list') }}">{{ __('Bug') }}</a>
+                    </li>
+                @endcan -->
                 @can('manage project task')
-                    <li class="dash-item dropdown {{ request()->is('calendar*') ? 'active' : '' }}">
-                        <a class="dash-link" href="{{ route('task.calendar', ['all']) }}">{{ __('Task Calendar') }}</a>
+                    <li class="dash-item {{ request()->is('calendar*') ? 'active' : '' }}">
+                        <a class="dash-link"
+                            href="{{ route('task.calendar', ['all']) }}">{{ __('Task Calendar') }}</a>
                     </li>
                 @endcan
                 @if (\Auth::user()->type != 'super admin')
-                    <li class="dash-item dropdown {{ Request::segment(1) == 'time-tracker' ? 'active open' : '' }}">
+                    <li class="dash-item  {{ Request::segment(1) == 'time-tracker' ? 'active open' : '' }}">
                         <a class="dash-link" href="{{ route('time.tracker') }}">{{ __('Tracker') }}</a>
                     </li>
                 @endif
                 @if (\Auth::user()->type == 'company' || \Auth::user()->type == 'Employee')
-                    <li class="dash-item dropdown {{ Request::route()->getName() == 'project_report.index' || Request::route()->getName() == 'project_report.show' ? 'active' : '' }}">
-                        <a class="dash-link" href="{{ route('project_report.index') }}">{{ __('Project Report') }}</a>
+                    <li
+                        class="dash-item  {{ Request::route()->getName() == 'project_report.index' || Request::route()->getName() == 'project_report.show' ? 'active' : '' }}">
+                        <a class="dash-link"
+                            href="{{ route('project_report.index') }}">{{ __('Project Report') }}</a>
                     </li>
                 @endif
-                <li class="dash-item dropdown {{ Request::route()->getName() == 'projecttype.index' || Request::route()->getName() == 'projecttype.show' ? 'active' : '' }}">
-                    <a class="dash-link" href="{{ route('projecttype.index') }}">{{ __('Project Type') }}</a>
+
+                <li
+                    class="dash-item  {{ Request::route()->getName() == 'projecttype.index' || Request::route()->getName() == 'projecttype.show' ? 'active' : '' }}">
+                    <a class="dash-link"
+                        href="{{ route('projecttype.index') }}">{{ __('Project Type') }}</a>
                 </li>
+                
+
+
                 @if (Gate::check('manage project task stage') || Gate::check('manage bug status'))
-                    <li class="dash-item dropdown {{ Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' ? 'active dash-trigger' : '' }}">
-                        <a class="dash-link dropdown-toggle" href="#">{{ __('Project Setup') }}<span class="dash-arrow"><i data-feather="chevron-right"></i></span></a>
+                    <li
+                        class="dash-item dash-hasmenu {{ Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' ? 'active dash-trigger' : '' }}">
+                        <a class="dash-link" href="#">{{ __('Project Setup') }}<span
+                                class="dash-arrow"><i data-feather="chevron-right"></i></span></a>
                         <ul class="dash-submenu">
                             @can('manage project task stage')
-                                <li class="dash-item dropdown {{ Request::route()->getName() == 'project-task-stages.index' ? 'active' : '' }}">
-                                    <a class="dash-link" href="{{ route('project-task-stages.index') }}">{{ __('Project Task Stages') }}</a>
+                                <li
+                                    class="dash-item  {{ Request::route()->getName() == 'project-task-stages.index' ? 'active' : '' }}">
+                                    <a class="dash-link"
+                                        href="{{ route('project-task-stages.index') }}">{{ __('Project Task Stages') }}</a>
                                 </li>
                             @endcan
                             @can('manage bug status')
-                                <li class="dash-item dropdown {{ Request::route()->getName() == 'bugstatus.index' ? 'active' : '' }}">
-                                    <a class="dash-link" href="{{ route('bugstatus.index') }}">{{ __('Bug Status') }}</a>
+                                <li
+                                    class="dash-item {{ Request::route()->getName() == 'bugstatus.index' ? 'active' : '' }}">
+                                    <a class="dash-link"
+                                        href="{{ route('bugstatus.index') }}">{{ __('Bug Status') }}</a>
                                 </li>
                             @endcan
                         </ul>
