@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+{{-- @extends('layouts.admin')
 
 @section('page-title')
     {{__('Project Dashboard')}}
@@ -453,4 +453,4 @@
             }, 300);
         </script>
     @endif
-@endpush
+@endpush --}}
