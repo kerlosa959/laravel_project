@@ -251,7 +251,10 @@
                                     Request::segment(1) == 'project_report'
                                         ? 'active dash-trigger'
                                         : '' }}">
-            
+            <a href="#!" class="dropdown-item"><span class="dash-micon"><i
+                class="ti ti-share"></i></span><span
+            class="dash-mtext">{{ __('Project') }}</span><span class="dash-arrow"><i
+                data-feather="chevron-right"></i></span></a>
             <ul class="dash-submenu">
                
                 @can('manage project')
