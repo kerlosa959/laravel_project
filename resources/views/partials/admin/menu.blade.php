@@ -251,10 +251,23 @@
                                     Request::segment(1) == 'project_report'
                                         ? 'active dash-trigger'
                                         : '' }}">
-            <a href="#!" class="dash-link"><span class="dash-micon"><i
-                        class="ti ti-share"></i></span><span
-                    class="dash-mtext">{{ __('Project') }}</span><span class="dash-arrow"><i
-                        data-feather="chevron-right"></i></span></a>
+           <li class="dash-item dropdown">
+            <a href="javascript:void(0);" class="dash-link dropdown-toggle">
+                <span class="dash-micon"><i class="ti ti-share"></i></span>
+                <span class="dash-mtext">{{ __('Project') }}</span>
+                <span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+            </a>
+            <ul class="dash-submenu">
+                <li class="dash-item">
+                    <a class="dash-link" href="{{ route('projects.index') }}">{{ __('All Projects') }}</a>
+                </li>
+                <li class="dash-item">
+                    <a class="dash-link" href="{{ route('projects.create') }}">{{ __('Create Project') }}</a>
+                </li>
+                <!-- أضف المزيد من العناصر هنا -->
+            </ul>
+        </li>
+        
             <ul class="dash-submenu">
                
                 @can('manage project')
