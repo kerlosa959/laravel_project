@@ -176,7 +176,7 @@
     \Auth::user()->type != 'super admin' &&
         (Gate::check('manage user') || Gate::check('manage role') || Gate::check('manage client')))
     <li
-        class="dash-item dash-hasmenu {{ Request::segment(1) == 'users' ||
+        class="dropdown-item {{ Request::segment(1) == 'users' ||
         Request::segment(1) == 'roles' ||
         Request::segment(1) == 'clients' ||
         Request::segment(1) == 'userlogs'
@@ -339,7 +339,7 @@
 <!--------------------- Start Products System ----------------------------------->
 
 @if (Gate::check('manage product & service') || Gate::check('manage product & service'))
-    <li class="dash-item dash-hasmenu">
+    <li class="dropdown-item">
         <a href="#!" class="dash-link ">
             <span class="dash-micon"><i class="ti ti-shopping-cart"></i></span><span
                 class="dash-mtext">{{ __('Inventories') }}</span><span class="dash-arrow">
@@ -848,7 +848,7 @@
                         Gate::check('ledger report') ||
                         Gate::check('trial balance report'))
                     <li
-                        class="dash-item dash-hasmenu
+                        class="dropdown-item
                                      {{ Request::route()->getName() == 'print-setting' ||
                                      Request::segment(1) == 'bank-account' ||
                                      Request::segment(1) == 'bank-transfer' ||
@@ -1079,7 +1079,7 @@
                         Gate::check('manage form builder') ||
                         Gate::check('manage contract'))
                     <li
-                        class="dash-item dash-hasmenu {{ Request::segment(1) == 'stages' || Request::segment(1) == 'labels' || Request::segment(1) == 'sources' || Request::segment(1) == 'lead_stages' || Request::segment(1) == 'pipelines' || Request::segment(1) == 'deals' || Request::segment(1) == 'leads' || Request::segment(1) == 'form_builder' || Request::segment(1) == 'form_response' || Request::segment(1) == 'contract' ? ' active dash-trigger' : '' }}">
+                        class="dropdown-item {{ Request::segment(1) == 'stages' || Request::segment(1) == 'labels' || Request::segment(1) == 'sources' || Request::segment(1) == 'lead_stages' || Request::segment(1) == 'pipelines' || Request::segment(1) == 'deals' || Request::segment(1) == 'leads' || Request::segment(1) == 'form_builder' || Request::segment(1) == 'form_response' || Request::segment(1) == 'contract' ? ' active dash-trigger' : '' }}">
                         <a href="#!" class="dash-link"><span class="dash-micon"><i
                                     class="ti ti-layers-difference"></i></span><span
                                 class="dash-mtext">{{ __('CRM') }}</span><span class="dash-arrow"><i
