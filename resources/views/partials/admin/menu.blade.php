@@ -186,7 +186,7 @@
         <a href="#!" class="dash-link "><span class="dash-micon"><i
                     class="ti ti-users"></i></span><span
                 class="dash-mtext">{{ __('User Management') }}</span><span class="dash-arrow"><i
-                    data-feather="chevron-right"></i></span></a>
+                    data-feather="chevron-down"></i></span></a>
         <ul class="dash-submenu">
             @can('manage user')
                 <li
