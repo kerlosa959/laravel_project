@@ -175,12 +175,15 @@
  @if (
     \Auth::user()->type != 'super admin' &&
         (Gate::check('manage user') || Gate::check('manage role') || Gate::check('manage client')))
-    
+    <li
+        class="dash-item dash-hasmenu {{ Request::segment(1) == 'users' ||
+        Request::segment(1) == 'roles' ||
+        Request::segment(1) == 'clients' ||
+        Request::segment(1) == 'userlogs'
+            ? ' active dash-trigger'
+            : '' }}">
 
-        <a href="#!" class="dash-link "><span class="dash-micon"><i
-                    class="ti ti-users"></i></span><span
-                class="dash-mtext">{{ __('User Management') }}</span><span class="dash-arrow"><i
-                    data-feather="chevron-right"></i></span></a>
+        
         <ul class="dash-submenu">
             @can('manage user')
                 <li
