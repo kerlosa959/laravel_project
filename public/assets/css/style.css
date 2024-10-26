@@ -12409,8 +12409,8 @@ body:not(.minimenu) .dash-sidebar .dash-link {
 	 display:none ;
 	 }
 	 body:not(.minimenu) .dash-sidebar .dash-submenu {
-		position: fixed;
-		left: 240px;
+		position: static;
+		
 		background: #ffffff;		
 		top: 70px;
 		width: 250px;
