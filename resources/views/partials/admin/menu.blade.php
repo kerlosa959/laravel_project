@@ -310,7 +310,7 @@
                     <li
                         class="dash-item dash-hasmenu {{ Request::segment(1) == 'bugstatus' || Request::segment(1) == 'project-task-stages' ? 'active dash-trigger' : '' }}">
                         <a class="dash-link" href="#">{{ __('Project Setup') }}<span
-                                class="dash-arrow"><i data-feather="chevron-right"></i></span></a>
+                                class="dash-arrow"><i data-feather="chevron-down"></i></span></a>
                         <ul class="dash-submenu">
                             @can('manage project task stage')
                                 <li
@@ -876,7 +876,7 @@
                         <a href="#!" class="dash-link"><span class="dash-micon"><i
                                     class="ti ti-box"></i></span><span
                                 class="dash-mtext">{{ __('Accounting') }}
-                            </span><span class="dash-arrow"><i data-feather="chevron-right"></i></span>
+                            </span><span class="dash-arrow"><i data-feather="chevron-down"></i></span>
                         </a>
                         <ul class="dash-submenu">
 
