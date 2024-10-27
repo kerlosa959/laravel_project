@@ -254,7 +254,7 @@
             <a href="#!" class="dash-link"><span class="dash-micon"><i
                         class="ti ti-share"></i></span><span
                     class="dash-mtext">{{ __('Project') }}</span><span class="dash-arrow"><i
-                        data-feather="chevron-right"></i></span></a>
+                        data-feather="chevron-down"></i></span></a>
             <ul class="dash-submenu">
                
                 @can('manage project')
@@ -1673,7 +1673,7 @@
         {{-- <div class="navbar-footer border-top ">
             <div class="d-flex align-items-center py-3 px-3 border-bottom">
                 <div class="me-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30"
+                     xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30"
                         fill="none">
                         <circle cx="14.5" cy="15.1846" r="14.5" fill="#6FD943"></circle>
                         <path opacity="0.4"
