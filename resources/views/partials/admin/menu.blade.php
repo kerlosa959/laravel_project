@@ -343,7 +343,7 @@
         <a href="#!" class="dash-link ">
             <span class="dash-micon"><i class="ti ti-shopping-cart"></i></span><span
                 class="dash-mtext">{{ __('Inventories') }}</span><span class="dash-arrow">
-                <i data-feather="chevron-right"></i></span>
+                <i data-feather="chevron-down"></i></span>
         </a>
         <ul class="dash-submenu">
             @if (Gate::check('manage product & service'))
@@ -1083,7 +1083,7 @@
                         <a href="#!" class="dash-link"><span class="dash-micon"><i
                                     class="ti ti-layers-difference"></i></span><span
                                 class="dash-mtext">{{ __('CRM') }}</span><span class="dash-arrow"><i
-                                    data-feather="chevron-right"></i></span></a>
+                                    data-feather="chevron-down"></i></span></a>
                         <ul
                             class="dash-submenu {{ Request::segment(1) == 'stages' || Request::segment(1) == 'labels' || Request::segment(1) == 'sources' || Request::segment(1) == 'lead_stages' || Request::segment(1) == 'leads' || Request::segment(1) == 'form_builder' || Request::segment(1) == 'form_response' || Request::segment(1) == 'deals' || Request::segment(1) == 'pipelines' ? 'show' : '' }}">
                             @can('manage lead')
