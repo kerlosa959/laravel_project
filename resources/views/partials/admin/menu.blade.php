@@ -982,7 +982,7 @@
                     </li>
                 @endif
             @endif
-<?php /*
+
             <!--------------------- End Account ----------------------------------->
             @if (Gate::check('manage customer') ||
                 Gate::check('manage proposal') ||
@@ -1069,7 +1069,7 @@
                 </ul>
             </li>
         @endif
-        <?php */ ?>
+        
         
             <!--------------------- Start CRM ----------------------------------->
 
