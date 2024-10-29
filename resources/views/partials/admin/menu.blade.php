@@ -452,7 +452,7 @@
                                     {{ __('HRM') }}
                                 </span>
                                 <span class="dash-arrow">
-                                    <i data-feather="chevron-right"></i>
+                                    <i data-feather="chevron-down"></i>
                                 </span>
                             </a>
                             <ul class="dash-submenu">
