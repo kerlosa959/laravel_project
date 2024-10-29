@@ -600,7 +600,7 @@
                                     <li
                                         class="dash-item dash-hasmenu {{ Request::segment(1) == 'job' || Request::segment(1) == 'job-application' || Request::segment(1) == 'candidates-job-applications' || Request::segment(1) == 'job-onboard' || Request::segment(1) == 'custom-question' || Request::segment(1) == 'interview-schedule' || Request::segment(1) == 'career' ? 'active dash-trigger' : '' }}    ">
                                         <a class="dash-link" href="#">{{ __('Recruitment Setup') }}<span
-                                                class="dash-arrow"><i data-feather="chevron-right"></i></span></a>
+                                                class="dash-arrow"><i data-feather="chevron-down"></i></span></a>
                                         <ul class="dash-submenu">
                                             @can('manage job')
                                                 <li
