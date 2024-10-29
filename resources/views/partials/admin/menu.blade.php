@@ -994,7 +994,7 @@
                 <a class="dash-link" href="#"><span class="dash-micon"><i
                                     class="ti ti-layers-difference"></i></span>
                                     <span class="dash-mtext">{{ __('Sales') }}</span>
-                                    <span class="dash-arrow"><i data-feather="chevron-right"></i></span></a>
+                                    <span class="dash-arrow"><i data-feather="chevron-down"></i></span></a>
                 <ul class="dash-submenu">
                     @if (Gate::check('manage customer'))
                         <li
@@ -1037,7 +1037,7 @@
                 <a class="dash-link" href="#"><span class="dash-micon"><i
                                     class="ti ti-layers-difference"></i></span>
                                     <span class="dash-mtext">{{ __('Purchases') }}</span>
-                                    <span class="dash-arrow"><i data-feather="chevron-right"></i></span></a>
+                                    <span class="dash-arrow"><i data-feather="chevron-down"></i></span></a>
                 <ul class="dash-submenu">
                     @if (Gate::check('manage vender'))
                         <li
