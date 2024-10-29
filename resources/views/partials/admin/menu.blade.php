@@ -475,7 +475,7 @@
                                     <li
                                         class="dash-item dash-hasmenu  {{ Request::segment(1) == 'setsalary' || Request::segment(1) == 'payslip' ? 'active dash-trigger' : '' }}">
                                         <a class="dash-link" href="#">{{ __('Payroll Setup') }}<span
-                                                class="dash-arrow"><i data-feather="chevron-right"></i></span></a>
+                                                class="dash-arrow"><i data-feather="chevron-down"></i></span></a>
                                         <ul class="dash-submenu">
                                             @can('manage set salary')
                                                 <li
@@ -572,7 +572,7 @@
                                         href="#navbar-training" data-toggle="collapse" role="button"
                                         aria-expanded="{{ Request::segment(1) == 'trainer' || Request::segment(1) == 'training' ? 'true' : 'false' }}">
                                         <a class="dash-link" href="#">{{ __('Training Setup') }}<span
-                                                class="dash-arrow"><i data-feather="chevron-right"></i></span></a>
+                                                class="dash-arrow"><i data-feather="chevron-down"></i></span></a>
                                         <ul class="dash-submenu">
                                             @can('manage training')
                                                 <li class="dash-item {{ request()->is('training*') ? 'active' : '' }}">
