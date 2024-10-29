@@ -884,7 +884,7 @@
                                 <li
                                     class="dash-item dash-hasmenu {{ Request::segment(1) == 'bank-account' || Request::segment(1) == 'bank-transfer' ? 'active dash-trigger' : '' }}">
                                     <a class="dash-link" href="#">{{ __('Banking') }}<span
-                                            class="dash-arrow"><i data-feather="chevron-right"></i></span></a>
+                                            class="dash-arrow"><i data-feather="chevron-down"></i></span></a>
                                     <ul class="dash-submenu">
                                         <li
                                             class="dash-item {{ Request::route()->getName() == 'bank-account.index' || Request::route()->getName() == 'bank-account.create' || Request::route()->getName() == 'bank-account.edit' ? ' active' : '' }}">
