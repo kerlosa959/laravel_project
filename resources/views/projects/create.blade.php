@@ -41,7 +41,9 @@
             {{ Form::label('project_image', __('Upload Documents'), ['class' => 'form-label']) }}<span class="text-danger">*</span>
             <div class="form-file mb-3">
                 <input type="file" class="form-control" name="project_image" required="">
-                <input type="pdf" class="from-control" name="project_file"required="">
+                <input type="file" class="from-control" name="project_exl"required="">
+                <input type="file" class="from-control" name="project_pdf"required="">
+                <input type="file" class="from-control" name="project_words"required="">
             </div>
 
         </div>
