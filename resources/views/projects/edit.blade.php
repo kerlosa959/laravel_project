@@ -128,20 +128,20 @@
             </div>
             <img {{$project->img_image}} class="avatar avatar-xl" alt="">
         </div>
-        <div class="row">
-            <div class="col-sm-12 col-md-12">
-                {{ Form::label('project_excel', __('Upload Excel File'), ['class' => 'form-label']) }}<span class="text-danger">*</span>
-                <div class="form-file mb-3">
-                    <input type="file" class="form-control" name="project_excel" accept=".xls, .xlsx">
-                </div>
-                <!-- Optional: To display the file info after upload -->
-                <div id="uploaded-excel"></div>
-            </div>
-        </div>
-        
 
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        {{ Form::label('project_excel', __('Upload Excel File'), ['class' => 'form-label']) }}<span class="text-danger">*</span>
+        <div class="form-file mb-3">
+            <input type="file" class="form-control" name="project_excel" accept=".xls, .xlsx">
+        </div>
+        <!-- Optional: To display the file info after upload -->
+        <div id="uploaded-excel"></div>
+    </div>
+</div>
+
 <div class="modal-footer">
     <input type="button" value="{{__('Cancel')}}" class="btn  btn-light" data-bs-dismiss="modal">
     <input type="submit" value="{{__('Update')}}" class="btn  btn-primary">
