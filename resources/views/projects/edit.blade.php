@@ -125,10 +125,20 @@
             {{ Form::label('project_image', __('Upload Documents'), ['class' => 'form-label']) }}<span class="text-danger">*</span>
             <div class="form-file mb-3">
                 <input type="file" class="form-control" name="project_image" >
-
             </div>
             <img {{$project->img_image}} class="avatar avatar-xl" alt="">
         </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                {{ Form::label('project_excel', __('Upload Excel File'), ['class' => 'form-label']) }}<span class="text-danger">*</span>
+                <div class="form-file mb-3">
+                    <input type="file" class="form-control" name="project_excel" accept=".xls, .xlsx">
+                </div>
+                <!-- Optional: To display the file info after upload -->
+                <div id="uploaded-excel"></div>
+            </div>
+        </div>
+        
 
     </div>
 </div>
