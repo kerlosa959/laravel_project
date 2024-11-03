@@ -141,6 +141,26 @@
         <div id="uploaded-excel"></div>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        {{ Form::label('project_word', __('Upload Word Document'), ['class' => 'form-label']) }}<span class="text-danger">*</span>
+        <div class="form-file mb-3">
+            <input type="file" class="form-control" name="project_word" accept=".doc, .docx">
+        </div>
+        <!-- Optional: To display file info after upload -->
+        <div id="uploaded-word"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        {{ Form::label('project_pdf', __('Upload PDF Document'), ['class' => 'form-label']) }}<span class="text-danger">*</span>
+        <div class="form-file mb-3">
+            <input type="file" class="form-control" name="project_pdf" accept=".pdf">
+        </div>
+        <!-- Optional: To display file info after upload -->
+        <div id="uploaded-pdf"></div>
+    </div>
+</div>
 
 <div class="modal-footer">
     <input type="button" value="{{__('Cancel')}}" class="btn  btn-light" data-bs-dismiss="modal">
