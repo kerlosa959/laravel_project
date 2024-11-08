@@ -12,6 +12,7 @@ use App\Models\ProjectTask;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Project extends Model
 {
     protected $fillable=[
@@ -20,7 +21,9 @@ class Project extends Model
         'start_date',
         'end_date',
         'client_id',
-        'project_image',
+        'project_excel',
+        'project_word',
+        'project_pdf',
         'space',
         'budget',
         'estimated_hrs',
@@ -112,6 +115,7 @@ class Project extends Model
 
         return self::$projectTask;
     }
+    
 
     public function project_progress($project,$last_task)
     {

@@ -92,6 +92,9 @@ class ProjectController extends Controller
                 $request->all(), [
                                 'project_name' => 'required',
                                 'project_image' => 'required',
+                                'project_excel'   => 'nullable|mimes:xls,xlsx',
+                                'project_word'  => 'nullable|mimes:doc,docx',
+                                'project_pdf'  => 'nullable|mimes:pdf',
                             ]
             );
             if($validator->fails())
@@ -115,6 +118,31 @@ class ProjectController extends Controller
                     $project->project_image      = 'projects/'.$imageName;
                 }
             }
+            if ($request->hasFile('project_excel')) {
+                $excelPath = $request->file('project_excel')->store('project_files', 'public');
+                $project->project_excel = $excelPath;
+            }
+    
+            if ($request->hasFile('project_word')) {
+                $wordPath = $request->file('project_word')->store('project_files', 'public');
+                $project->project_word = $wordPath;
+            }
+    
+            if ($request->hasFile('project_pdf')) {
+                $pdfPath = $request->file('project_pdf')->store('project_files', 'public');
+                $project->project_pdf = $pdfPath;
+            }
+    
+            // Save the project to the database
+            $project->save();
+    
+            // Assign the manager to the project (assuming many-to-many relationship)
+            $project->users()->attach($request->input('user'));
+    
+            // Redirect or return response
+            return redirect()->route('projects.index')->with('success', 'Project created successfully.');
+        }
+    
 
             $project->project_no = Utility::getProjectId();
             $project->client_id = $request->client;

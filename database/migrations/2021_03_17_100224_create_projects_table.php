@@ -20,6 +20,9 @@ class CreateProjectsTable extends Migration
                 $table->date('start_date')->nullable();
                 $table->date('end_date')->nullable();
                 $table->string('project_image')->nullable();
+                $table->string('project_excel')->nullable(); // Path to the Excel file
+                $table->string('project_word')->nullable(); // Path to the Word document
+                $table->string('project_pdf')->nullable(); // Path to the PDF document
                 $table->integer('budget')->nullable();
                 $table->integer('client_id');
                 $table->text('description')->nullable();
