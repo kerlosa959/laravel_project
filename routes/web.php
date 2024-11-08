@@ -1060,7 +1060,7 @@ Route::group(['middleware' => ['verified']], function () {
     Route::post('projects/{id}/gantt', [ProjectController::class, 'ganttPost'])->name('projects.gantt.post')->middleware(['auth', 'XSS']);
 
     Route::resource('projects', ProjectController::class)->middleware(['auth', 'XSS']);
-
+    Route::resource('projects', ProjectController::class);
     // User Permission
     Route::get('projects/{id}/user/{uid}/permission', [ProjectController::class, 'userPermission'])->name('projects.user.permission')->middleware(['auth', 'XSS']);
     Route::post('projects/{id}/user/{uid}/permission', [ProjectController::class, 'userPermissionStore'])->name('projects.user.permission.store')->middleware(['auth', 'XSS']);

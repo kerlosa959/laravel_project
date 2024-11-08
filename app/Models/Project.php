@@ -10,6 +10,7 @@ use App\Models\TaskStage;
 use Carbon\Carbon;
 use App\Models\ProjectTask;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 
