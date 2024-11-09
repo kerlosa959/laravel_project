@@ -21,6 +21,9 @@ class CreateProjectTasksTable extends Migration
                 $table->integer('estimated_hrs')->default(0);
                 $table->date('start_date')->nullable();
                 $table->date('end_date')->nullable();
+                $table->string('project_excel')->nullable(); // Path to the Excel file
+                $table->string('project_word')->nullable(); // Path to the Word document
+                $table->string('project_pdf')->nullable(); // Path to the PDF document
                 $table->string('priority', 50)->default('medium');
                 $table->string('priority_color', 50)->nullable();
                 $table->text('assign_to')->nullable();
