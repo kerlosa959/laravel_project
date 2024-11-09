@@ -86,40 +86,38 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-
-
-        if(\Auth::user()->can('create project'))
-        {
+        if (\Auth::user()->can('create project')) {
             $validator = \Validator::make(
-                $request->all(), [
-                                'project_name' => 'required',
-                                'project_image' => 'required',
-                                'project_excel'   => 'nullable|mimes:xls,xlsx',
-                                'project_word'  => 'nullable|mimes:doc,docx',
-                                'project_pdf'  => 'nullable|mimes:pdf',
-                            ]
+                $request->all(),
+                [
+                    'project_name' => 'required',
+                    'project_image' => 'required',
+                    'project_excel' => 'nullable|mimes:xls,xlsx',
+                    'project_word' => 'nullable|mimes:doc,docx',
+                    'project_pdf' => 'nullable|mimes:pdf',
+                ]
             );
-            if($validator->fails())
-            {
+    
+            if ($validator->fails()) {
                 return redirect()->back()->with('error', Utility::errorFormat($validator->getMessageBag()));
             }
+    
             $project = new Project();
             $project->project_name = $request->project_name;
             $project->start_date = date("Y-m-d H:i:s", strtotime($request->start_date));
             $project->end_date = date("Y-m-d H:i:s", strtotime($request->end_date));
-
-            if($request->hasFile('project_image'))
-            {
-                //storage limit
+    
+            if ($request->hasFile('project_image')) {
+                // storage limit
                 $image_size = $request->file('project_image')->getSize();
                 $result = Utility::updateStorageLimit(\Auth::user()->creatorId(), $image_size);
-                if($result==1)
-                {
+                if ($result == 1) {
                     $imageName = time() . '.' . $request->project_image->extension();
                     $request->file('project_image')->storeAs('projects', $imageName);
-                    $project->project_image      = 'projects/'.$imageName;
+                    $project->project_image = 'projects/' . $imageName;
                 }
             }
+    
             if ($request->hasFile('project_excel')) {
                 $excelPath = $request->file('project_excel')->store('project_files', 'public');
                 $project->project_excel = $excelPath;
@@ -135,17 +133,7 @@ class ProjectController extends Controller
                 $project->project_pdf = $pdfPath;
             }
     
-            // Save the project to the database
-            $project->save();
-    
-            // Assign the manager to the project (assuming many-to-many relationship)
-            $project->users()->attach($request->input('user'));
-    
-            // Redirect or return response
-            return redirect()->route('projects.index')->with('success', 'Project created successfully.');
-        }
-    
-
+            // Additional project information
             $project->project_no = Utility::getProjectId();
             $project->client_id = $request->client;
             $project->contract_type = $request->contract_type;
@@ -158,134 +146,77 @@ class ProjectController extends Controller
             $project->estimated_hrs = $request->estimated_hrs;
             $project->tags = $request->tag;
             $project->created_by = \Auth::user()->creatorId();
-
-            if($request->user){
-                foreach($request->user as $key => $value) {
+    
+            if ($request->user) {
+                foreach ($request->user as $key => $value) {
                     $project->manager_id = $value;
                 }
             }
-            /*if($request->supervisor){
-                foreach($request->supervisor as $key => $value) {
-                    $project->supervisor_id = $value;
-                }
-            } */
-
-            $project['copylinksetting']   = '{"member":"on","milestone":"off","basic_details":"on","activity":"off","attachment":"on","bug_report":"on","task":"off","tracker_details":"off","timesheet":"off" ,"password_protected":"off"}';
-
+    
+            $project['copylinksetting'] = '{"member":"on","milestone":"off","basic_details":"on","activity":"off","attachment":"on","bug_report":"on","task":"off","tracker_details":"off","timesheet":"off","password_protected":"off"}';
+    
             $project->save();
-
-            if(\Auth::user()->type=='company'){
-
-                ProjectUser::create(
-                    [
-                        'project_id' => $project->id,
-                        'user_id' => Auth::user()->id,
-                    ]
-                );
-
-                if($request->user){
-                    foreach($request->user as $key => $value) {
-                        ProjectUser::create(
-                            [
-                                'project_id' => $project->id,
-                                'user_id' => $value,
-                            ]
-                        );
+    
+            // Add project users and notifications
+            if (\Auth::user()->type == 'company') {
+                ProjectUser::create(['project_id' => $project->id, 'user_id' => Auth::user()->id]);
+    
+                if ($request->user) {
+                    foreach ($request->user as $key => $value) {
+                        ProjectUser::create(['project_id' => $project->id, 'user_id' => $value]);
                     }
                 }
-                if($request->supervisor){
-                    foreach($request->supervisor as $key => $value) {
-                        ProjectUser::create(
-                            [
-                                'project_id' => $project->id,
-                                'user_id' => $value,
-                            ]
-                        );
+    
+                if ($request->supervisor) {
+                    foreach ($request->supervisor as $key => $value) {
+                        ProjectUser::create(['project_id' => $project->id, 'user_id' => $value]);
                     }
                 }
-
-
-            }else{
-                ProjectUser::create(
-                    [
-                        'project_id' => $project->id,
-                        'user_id' => Auth::user()->creatorId(),
-                    ]
-                );
-
-                ProjectUser::create(
-                    [
-                        'project_id' => $project->id,
-                        'user_id' => Auth::user()->id,
-                    ]
-                );
-
-                if($request->user){
-                    foreach($request->user as $key => $value) {
-                        ProjectUser::create(
-                            [
-                                'project_id' => $project->id,
-                                'user_id' => $value,
-                                'user_type' => 1,
-                            ]
-                        );
+            } else {
+                ProjectUser::create(['project_id' => $project->id, 'user_id' => Auth::user()->creatorId()]);
+                ProjectUser::create(['project_id' => $project->id, 'user_id' => Auth::user()->id]);
+    
+                if ($request->user) {
+                    foreach ($request->user as $key => $value) {
+                        ProjectUser::create(['project_id' => $project->id, 'user_id' => $value, 'user_type' => 1]);
                     }
                 }
-                if($request->supervisor){
-                    foreach($request->supervisor as $key => $value) {
-                        ProjectUser::create(
-                            [
-                                'project_id' => $project->id,
-                                'user_id' => $value,
-                                'user_type' => 2,
-                            ]
-                        );
+    
+                if ($request->supervisor) {
+                    foreach ($request->supervisor as $key => $value) {
+                        ProjectUser::create(['project_id' => $project->id, 'user_id' => $value, 'user_type' => 2]);
                     }
                 }
-
             }
-
-
-            //For Notification
-            $setting  = Utility::settings(\Auth::user()->creatorId());
-            $projectNotificationArr = [
-                'project_name' => $request->project_name,
-                'user_name' => \Auth::user()->name,
-            ];
-            //Slack Notification
-            if(isset($setting['project_notification']) && $setting['project_notification'] ==1)
-            {
+    
+            // Notification and webhook
+            $setting = Utility::settings(\Auth::user()->creatorId());
+            $projectNotificationArr = ['project_name' => $request->project_name, 'user_name' => \Auth::user()->name];
+    
+            if (isset($setting['project_notification']) && $setting['project_notification'] == 1) {
                 Utility::send_slack_msg('new_project', $projectNotificationArr);
             }
-
-            //Telegram Notification
-            if(isset($setting['telegram_project_notification']) && $setting['telegram_project_notification'] ==1)
-            {
+    
+            if (isset($setting['telegram_project_notification']) && $setting['telegram_project_notification'] == 1) {
                 Utility::send_telegram_msg('new_project', $projectNotificationArr);
             }
-
-            //webhook
-            $module ='New Project';
-            $webhook=  Utility::webhookSetting($module);
-            if($webhook)
-            {
+    
+            $module = 'New Project';
+            $webhook = Utility::webhookSetting($module);
+            if ($webhook) {
                 $parameter = json_encode($project);
-                $status = Utility::WebhookCall($webhook['url'],$parameter,$webhook['method']);
-                if($status == false)
-                {
+                $status = Utility::WebhookCall($webhook['url'], $parameter, $webhook['method']);
+                if ($status == false) {
                     return redirect()->back()->with('error', __('Webhook call failed.'));
                 }
-
             }
-
-
-            return redirect()->route('projects.index')->with('success', __('Project Add Successfully'). ((isset($result) && $result!=1) ? '<br> <span class="text-danger">' . $result . '</span>' : ''));
-        }
-        else
-        {
+    
+            return redirect()->route('projects.index')->with('success', __('Project added successfully') . ((isset($result) && $result != 1) ? '<br> <span class="text-danger">' . $result . '</span>' : ''));
+        } else {
             return redirect()->back()->with('error', __('Permission Denied.'));
         }
     }
+    
 
     /**
      * Display the specified resource.
