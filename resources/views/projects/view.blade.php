@@ -614,6 +614,9 @@
                                     @endforeach
                                 @else
                                     <div class="py-5">
+                                        <?php
+                                        var_dump($project);
+                                        ?>
                                         <h6 class="h6 text-center">{{__('No Attachments Found.')}}</h6>
                                     </div>
                                 @endif

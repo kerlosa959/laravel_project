@@ -92,7 +92,7 @@ class ProjectController extends Controller
                 [
                     'project_name' => 'required',
                     'project_image' => 'required',
-                    'project_excel' => 'nullable|mimes:xls,xlsx',
+                    'project_excel' => 'nullable|mimes:xls,xlsx,csv',
                     'project_word' => 'nullable|mimes:doc,docx',
                     'project_pdf' => 'nullable|mimes:pdf',
                 ]
