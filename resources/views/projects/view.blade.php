@@ -599,17 +599,17 @@ if ($project->project_pdf || $project->project_word || $project->project_excel) 
 
     // Display PDF link if it exists
     if ($project->project_pdf) {
-        echo '<li><a href="' . asset($project->project_pdf) . '" target="_blank">Download PDF</a></li>';
+        echo '<li><a href="' . Storage::url($project->project_pdf) . '" target="_blank">Download PDF</a></li>';
     }
 
     // Display Word link if it exists
     if ($project->project_word) {
-        echo '<li><a href="' . asset($project->project_word) . '" target="_blank">Download Word Document</a></li>';
+        echo '<li><a href="' . Storage::url($project->project_word) . '" target="_blank">Download Word Document</a></li>';
     }
 
     // Display Excel link if it exists
     if ($project->project_excel) {
-        echo '<li><a href="' . asset($project->project_excel) . '" target="_blank">Download Excel File</a></li>';
+        echo '<li><a href="' . Storage::url($project->project_excel) . '" target="_blank">Download Excel File</a></li>';
     }
 
     echo '</ul>';
