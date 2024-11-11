@@ -9,7 +9,6 @@ class AddFilesToProjectsTable extends Migration
     public function up()
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->string('project_image')->nullable();
             $table->string('project_excel')->nullable(); // Path to the Excel file
             $table->string('project_word')->nullable(); // Path to the Word document
             $table->string('project_pdf')->nullable(); // Path to the PDF document
