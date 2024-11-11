@@ -591,6 +591,8 @@
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
                             <?php
+                            use Illuminate\Support\Facades\Storage;
+
 // Check if any of the attachments exist
 if ($project->project_pdf || $project->project_word || $project->project_excel) {
     echo '<ul>';
