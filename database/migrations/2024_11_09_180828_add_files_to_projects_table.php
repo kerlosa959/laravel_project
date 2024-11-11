@@ -11,7 +11,7 @@ class CreateProjectsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function upfliles()
     {
         if(!Schema::hasTable('projects')){
             Schema::create('projects', function (Blueprint $table) {
