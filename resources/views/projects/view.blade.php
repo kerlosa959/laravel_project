@@ -599,7 +599,7 @@ if ($project->project_pdf || $project->project_word || $project->project_excel) 
 
     // Display PDF link if it exists
     if ($project->project_pdf) {
-        echo '<li><a href="' . Storage::url($project->project_pdf) . '" target="_blank">Download PDF</a></li>';
+        echo '<li><a href="' . Storage::url('project_files/' . $project->project_pdf) . '" target="_blank">Download PDF</a></li>';
     }
 
     // Display Word link if it exists
