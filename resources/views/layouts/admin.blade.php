@@ -218,3 +218,4 @@
 @stack('script-page')
 </body>
 </html>
+
