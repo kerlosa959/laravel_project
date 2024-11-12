@@ -1,92 +1,255 @@
 @php
-    $logo=asset(Storage::url('uploads/logo/'));
-    $company_favicon=Utility::getValByName('company_favicon');
-    $SITE_RTL = Cookie::get('SITE_RTL');
+    use App\Models\Utility;
+    $setting = \App\Models\Utility::settings();
+
+    $logo=\App\Models\Utility::get_file('uploads/logo');
+    $company_favicon=$setting['company_favicon'] ?? '';
+
+    $color = (!empty($setting['color'])) ? $setting['color'] : 'theme-3';
+    $SITE_RTL=$setting['SITE_RTL'] ?? '';
+
+    $lang = \App::getLocale('lang');
+    if($lang == 'ar' || $lang == 'he')
+    {
+        $SITE_RTL= 'on';
+    }
+    $metatitle =  isset($setting['meta_title']) ? $setting['meta_title'] :'';
+    $metsdesc= isset($setting['meta_desc'])?$setting['meta_desc']:'';
+    $meta_image = \App\Models\Utility::get_file('uploads/meta/');
+    $meta_logo = isset($setting['meta_image'])?$setting['meta_image']:'';
 
 @endphp
     <!DOCTYPE html>
-<html lang="en" dir="{{$SITE_RTL == 'on'?'rtl':''}}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{$SITE_RTL == 'on' ? 'rtl' : '' }}">
+
+
 <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}">
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>{{(Utility::getValByName('title_text')) ? Utility::getValByName('title_text') : config('app.name', 'ERPGO')}} - @yield('page-title')</title>
+    <title>{{($setting['title_text']) ? $setting['title_text'] : config('app.name', 'ERPGO')}} - @yield('page-title')</title>
+
+    <meta name="title" content="{{$metatitle}}">
+    <meta name="description" content="{{$metsdesc}}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ env('APP_URL') }}">
+    <meta property="og:title" content="{{$metatitle}}">
+    <meta property="og:description" content="{{$metsdesc}}">
+    <meta property="og:image" content="{{$meta_image.$meta_logo}}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ env('APP_URL') }}">
+    <meta property="twitter:title" content="{{$metatitle}}">
+    <meta property="twitter:description" content="{{$metsdesc}}">
+    <meta property="twitter:image" content="{{$meta_image.$meta_logo}}">
+
+
+    <script src="{{ asset('js/html5shiv.js') }}"></script>
+
+{{--    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>--}}
+
+<!-- Meta -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="url" content="{{ url('').'/'.config('chatify.path') }}" data-user="{{ Auth::user()->id }}">
     <link rel="icon" href="{{$logo.'/'.(isset($company_favicon) && !empty($company_favicon)?$company_favicon:'favicon.png')}}" type="image" sizes="16x16">
 
-    <link rel="stylesheet" href="{{ asset('assets/libs/@fortawesome/fontawesome-free/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/libs/animate.css/animate.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap-timepicker/css/bootstrap-timepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/libs/bootstrap-daterangepicker/daterangepicker.css') }}">
+    <!-- Favicon icon -->
+{{--    <link rel="icon" href="{{ asset('assets/images/favicon.svg') }}" type="image/x-icon"/>--}}
+<!-- Calendar-->
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/main.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('assets/libs/select2/dist/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/flatpickr.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/animate.min.css') }}">
+
+    <!-- font css -->
+    <link rel="stylesheet" href="{{ asset('assets/fonts/tabler-icons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/feather.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/fonts/material.css') }}">
+
+    <!--bootstrap switch-->
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/bootstrap-switch-button.min.css') }}">
+
+    <!-- vendor css -->
+    @if ($SITE_RTL == 'on')
+        <link rel="stylesheet" href="{{ asset('assets/css/style-rtl.css') }}">
+
+    @endif
+
+    @if($setting['cust_darklayout'] == 'on')
+        <link rel="stylesheet" href="{{ asset('assets/css/style-dark.css') }}" id="main-style">
+    @else
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style">
+    @endif
 
 
-    {{-- <script src="{{ asset('js/chatify/font.awesome.min.js') }}"></script> --}}
-    <script src="{{ asset('js/chatify/autosize.js') }}"></script>
-    <script src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/customizer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}" >
 
-    <link rel='stylesheet' href='https://unpkg.com/nprogress@0.2.0/nprogress.css'/>
-    <link href="{{ asset('css/chatify/style.css') }}" rel="stylesheet"/>
-
-
-    <script src="{{ asset('js/letter.avatar.js')}}"></script>
-    <script>
-        LetterAvatar.transform();
-    </script>
-
+    @if ($setting['cust_darklayout'] == 'on')
+        <link rel="stylesheet" href="{{ asset('css/custom-dark.css') }}">
+    @endif
 
     @stack('css-page')
-
-
-    @if(Auth::check())
-        <link rel="stylesheet" href="{{ asset('css/site-'.Auth::user()->mode.'.css') }}" id="stylesheet">
-    @else
-        <link rel="stylesheet" href="{{asset('assets/css/site.css') }}">
-    @endif
-    <link rel="stylesheet" href="{{asset('assets/css/ac.css') }}">
-    <link rel="stylesheet" href="{{asset('assets/css/datatables.min.css') }}">
-    <link rel="stylesheet" href="{{asset('assets/css/stylesheet.css') }}">
-    <link rel="stylesheet" href="{{asset('assets/css/custom.css') }}">
-    @if(Auth::check() && Auth::user()->mode =='dark')
-        <link rel="stylesheet" href="{{ asset('css/mode-dark.css') }}" id="stylesheet">
-    @endif
-
-    @if($SITE_RTL=='on')
-        <link rel="stylesheet" href="{{ asset('css/bootstrap-rtl.css') }}">
-    @endif
-
 </head>
+<body class="{{ $color }}">
 
-<body class="application application-offset">
-<div class="container-fluid container-application">
-    @include('partials.admin.menu')
-    <div class="main-content position-relative">
-        @include('partials.admin.header')
-        <div class="page-content">
-            <div class="page-title">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-xl-4 col-lg-4 col-md-4 d-flex align-items-center justify-content-between justify-content-md-start mb-3 mb-md-0">
-                        <div class="d-inline-block">
-                            <h5 class="h4 d-inline-block font-weight-400 mb-0 ">@yield('page-title')</h5>
+
+<!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
+    </div>
+</div>
+
+@include('partials.admin.menu')
+<!-- [ navigation menu ] end -->
+<!-- [ Header ] start -->
+@include('partials.admin.header')
+
+<!-- Modal -->
+<div class="modal notification-modal fade"
+     id="notification-modal"
+     tabindex="-1"
+     role="dialog"
+     aria-hidden="true"
+>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button
+                    type="button"
+                    class="btn-close float-end"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                ></button>
+                <h6 class="mt-2">
+                    <i data-feather="monitor" class="me-2"></i>Desktop settings
+                </h6>
+                <hr/>
+                <div class="form-check form-switch">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="pcsetting1"
+                        checked
+                    />
+                    <label class="form-check-label f-w-600 pl-1" for="pcsetting1"
+                    >Allow desktop notification</label
+                    >
+                </div>
+                <p class="text-muted ms-5">
+                    you get lettest content at a time when data will updated
+                </p>
+                <div class="form-check form-switch">
+                    <input type="checkbox" class="form-check-input" id="pcsetting2"/>
+                    <label class="form-check-label f-w-600 pl-1" for="pcsetting2"
+                    >Store Cookie</label
+                    >
+                </div>
+                <h6 class="mb-0 mt-5">
+                    <i data-feather="save" class="me-2"></i>Application settings
+                </h6>
+                <hr/>
+                <div class="form-check form-switch">
+                    <input type="checkbox" class="form-check-input" id="pcsetting3"/>
+                    <label class="form-check-label f-w-600 pl-1" for="pcsetting3"
+                    >Backup Storage</label
+                    >
+                </div>
+                <p class="text-muted mb-4 ms-5">
+                    Automaticaly take backup as par schedule
+                </p>
+                <div class="form-check form-switch">
+                    <input type="checkbox" class="form-check-input" id="pcsetting4"/>
+                    <label class="form-check-label f-w-600 pl-1" for="pcsetting4"
+                    >Allow guest to print file</label
+                    >
+                </div>
+                <h6 class="mb-0 mt-5">
+                    <i data-feather="cpu" class="me-2"></i>System settings
+                </h6>
+                <hr/>
+                <div class="form-check form-switch">
+                    <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="pcsetting5"
+                        checked
+                    />
+                    <label class="form-check-label f-w-600 pl-1" for="pcsetting5"
+                    >View other user chat</label
+                    >
+                </div>
+                <p class="text-muted ms-5">Allow to show public user message</p>
+            </div>
+            <div class="modal-footer">
+                <button
+                    type="button"
+                    class="btn btn-light-danger btn-sm"
+                    data-bs-dismiss="modal"
+                >
+                    Close
+                </button>
+                <button type="button" class="btn btn-light-primary btn-sm">
+                    Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ Header ] end -->
+
+<!-- [ Main Content ] start -->
+<div class="dash-container">
+    <div class="dash-content">
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <div class="page-header-title">
+                            <h4 class="m-b-10">@yield('page-title')</h4>
                         </div>
+                        <ul class="breadcrumb">
+                            @yield('breadcrumb')
+                        </ul>
                     </div>
-                    <div class="col-xl-8 col-lg-8 col-md-8 d-flex align-items-center justify-content-between justify-content-md-end">
-                        @yield('action-button')
+                    <div class="col">
+                        @yield('action-btn')
                     </div>
                 </div>
             </div>
-            @yield('content')
+        </div>
+    @yield('content')
+    <!-- [ Main Content ] end -->
+    </div>
+</div>
+<div class="modal fade" id="commonModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="body">
+            </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="commonModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="commonModalOver" tabindex="-1" role="dialog" aria-labelledby="commonModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div>
-                <h4 class="h4 font-weight-400 float-left modal-title" id="exampleModalLabel"></h4>
-                <a href="#" class="more-text widget-text float-right close-icon" data-dismiss="modal" aria-label="Close">{{__('Close')}}</a>
+            <div class="modal-header">
+                <h5 class="modal-title" id="commonModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
             </div>
             <div class="modal-body">
             </div>
@@ -94,128 +257,17 @@
     </div>
 </div>
 
-{{--Side Modal--}}
-<div class="modal fade fixed-right" id="commonModal-right" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="scrollbar-inner">
-        <div class="min-h-300 mh-300">
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 99999">
+    <div id="liveToast" class="toast text-white fade" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body"></div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
         </div>
     </div>
 </div>
-
-<script src="{{ asset('assets/js/site.core.js') }}"></script>
-
-<script src="{{ asset('assets/libs/progressbar.js/dist/progressbar.min.js') }}"></script>
-<script src="{{ asset('assets/libs/moment/min/moment.min.js') }}"></script>
-<script src="{{ asset('assets/libs/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
-<script src="{{ asset('assets/libs/bootstrap-timepicker/js/bootstrap-timepicker.js') }}"></script>
-<script src="{{ asset('assets/libs/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ asset('assets/libs/select2/dist/js/select2.min.js') }}"></script>
-<script src="{{ asset('assets/libs/nicescroll/jquery.nicescroll.min.js')}} "></script>
-<script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js')}}"></script>
-<script src="{{ asset('js/jquery.form.js') }}"></script>
-<script>moment.locale('en');</script>
-@stack('theme-script')
-
-<script>
-    var dataTabelLang = {
-        paginate: {previous: "{{__('Previous')}}", next: "{{__('Next')}}"},
-        lengthMenu: "{{__('Show')}} _MENU_ {{__('entries')}}",
-        zeroRecords: "{{__('No data available in table')}}",
-        info: "{{__('Showing')}} _START_ {{__('to')}} _END_ {{__('of')}} _TOTAL_ {{__('entries')}}",
-        infoEmpty: " ",
-        search: "{{__('Search:')}}"
-    }
-</script>
-
-<script src="{{ asset('assets/js/site.js') }}"></script>
-<script src="{{ asset('assets/js/datatables.min.js') }}"></script>
-
-<script src="{{ asset('assets/js/jscolor.js') }} "></script>
-<script>
-    var toster_pos = "{{$SITE_RTL=='on' ?'left' : 'right'}}";
-</script>
-<script src="{{ asset('assets/js/custom.js') }} "></script>
-@if(Utility::getValByName('gdpr_cookie') == 'on')
-    <script type="text/javascript">
-
-        var defaults = {
-            'messageLocales': {
-                /*'en': 'We use cookies to make sure you can have the best experience on our website. If you continue to use this site we assume that you will be happy with it.'*/
-                'en': "{{Utility::getValByName('cookie_text')}}"
-            },
-            'buttonLocales': {
-                'en': 'Ok'
-            },
-            'cookieNoticePosition': 'bottom',
-            'learnMoreLinkEnabled': false,
-            'learnMoreLinkHref': '/cookie-banner-information.html',
-            'learnMoreLinkText': {
-                'it': 'Saperne di più',
-                'en': 'Learn more',
-                'de': 'Mehr erfahren',
-                'fr': 'En savoir plus'
-            },
-            'buttonLocales': {
-                'en': 'Ok'
-            },
-            'expiresIn': 30,
-            'buttonBgColor': '#d35400',
-            'buttonTextColor': '#fff',
-            'noticeBgColor': '#051c4b',
-            'noticeTextColor': '#fff',
-            'linkColor': '#009fdd'
-        };
-    </script>
-    <script src="{{ asset('assets/js/cookie.notice.js')}}"></script>
-@endif
-<script>
-    var date_picker_locale = {
-        format: 'YYYY-MM-DD',
-        daysOfWeek: [
-            "{{__('Sun')}}",
-            "{{__('Mon')}}",
-            "{{__('Tue')}}",
-            "{{__('Wed')}}",
-            "{{__('Thu')}}",
-            "{{__('Fri')}}",
-            "{{__('Sat')}}"
-        ],
-        monthNames: [
-            "{{__('January')}}",
-            "{{__('February')}}",
-            "{{__('March')}}",
-            "{{__('April')}}",
-            "{{__('May')}}",
-            "{{__('June')}}",
-            "{{__('July')}}",
-            "{{__('August')}}",
-            "{{__('September')}}",
-            "{{__('October')}}",
-            "{{__('November')}}",
-            "{{__('December')}}"
-        ],
-    };
-    var calender_header = {
-        today: "{{__('today')}}",
-        month: '{{__('month')}}',
-        week: '{{__('week')}}',
-        day: '{{__('day')}}',
-        list: '{{__('list')}}'
-    };
-</script>
-@if($message = Session::get('success'))
-    <script>
-        show_toastr('Success', '{!! $message !!}', 'success');
-    </script>
-@endif
-@if($message = Session::get('error'))
-    <script>
-        show_toastr('Error', '{!! $message !!}', 'error');
-    </script>
-@endif
-
+@include('partials.admin.footer')
 @include('Chatify::layouts.footerLinks')
-@stack('script-page')
+
 </body>
 </html>
-
