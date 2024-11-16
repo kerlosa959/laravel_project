@@ -590,33 +590,35 @@
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
-                                @if($project->projectAttachments()->count() > 0)
-                                    @foreach($project->projectAttachments() as $attachment)
-                                        <li class="list-group-item px-0">
-                                            <div class="row align-items-center justify-content-between">
-                                                <div class="col mb-3 mb-sm-0">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="div">
-                                                            <h6 class="m-0">{{ $attachment->name }}</h6>
-                                                            <small class="text-muted">{{ $attachment->file_size }}</small>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto text-sm-end d-flex align-items-center">
-                                                    <div class="action-btn bg-info ms-2">
-                                                        <a href="{{asset(Storage::url('tasks/'.$attachment->file))}}"  data-bs-toggle="tooltip" title="{{__('Download')}}" class="btn btn-sm" download>
-                                                            <i class="ti ti-download text-white"></i>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                @else
-                                    <div class="py-5">
-                                        <h6 class="h6 text-center">{{__('No Attachments Found.')}}</h6>
-                                    </div>
-                                @endif
+                            <?php
+                            use Illuminate\Support\Facades\Storage;
+
+// Check if any of the attachments exist
+if ($project->project_pdf || $project->project_word || $project->project_excel) {
+    echo '<ul>';
+
+    // Display PDF link if it exists
+    if ($project->project_pdf) {
+        echo '<li><a href="' . url("storage/app/public/{$project->project_pdf}") . '" target="_blank">Download PDF</a></li>';
+    }
+
+    // Display Word link if it exists
+    if ($project->project_word) {
+        echo "<li><a href='" . url("storage/app/public/{$project->project_word}") . "' target='_blank'>Download Word Document</a></li>";
+    }
+
+    // Display Excel link if it exists
+    if ($project->project_excel) {
+        echo '<li><a href="' . url("storage/app/public/{$project->project_excel}")  . '" target="_blank">Download Excel File</a></li>';
+    }
+
+    echo '</ul>';
+} else {
+    // If none of the attachments exist
+    echo 'No attachment';
+}
+?>
+
                             </ul>
         
                         </div>
