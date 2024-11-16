@@ -210,7 +210,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h5>{{__('Tasks Overview')}} <span class="float-end"> <small class="text-muted">{{__('Total Completed task in last 7 days')}}</small></span></h5>
+                    <h5>{{__('Tasks Overview')}} <span class="float-end"> <small class="text-muted">{{__('Total Completed task in last 8 days')}}</small></span></h5>
 
                 </div>
                 <div class="card-body">

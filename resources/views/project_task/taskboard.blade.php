@@ -64,7 +64,7 @@
 @endsection
 
 @section('content')
-    <div class="row min-750" id="taskboard_view"></div>
+    <div  id="taskboard_view"></div>
 @endsection
 
 @push('script-page')
