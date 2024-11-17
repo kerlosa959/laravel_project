@@ -210,7 +210,7 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <h5>{{__('Tasks Overview')}} <span class="float-end"> <small class="text-muted">{{__('Total Completed task in last 8 days')}}</small></span></h5>
+                    <h5>{{__('Tasks Overview')}} <span class="float-end"> <small class="text-muted">{{__('Total Completed task in last 7 days')}}</small></span></h5>
 
                 </div>
                 <div class="card-body">
@@ -266,7 +266,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="col-md-6">
+         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
                     <h5>{{__('Timesheet Logged Hours')}} <span>  <small class="float-end text-muted flo">{{__('Last 7 days')}}</small></span></h5>
@@ -275,7 +275,7 @@
                     <div id="timesheet_logged"></div>
                 </div>
             </div>
-        </div> -->
+        </div> 
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
@@ -321,4 +321,5 @@
         </div>
 
     </div>
+
 @endsection
