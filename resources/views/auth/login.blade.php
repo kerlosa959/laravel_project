@@ -449,6 +449,11 @@ body {
         <label for="pwd">Password <span class="required-star">*</span></label>
         <input name="password" autocomplete="off" type="password" placeholder="Minimum 8 characters" id="pwd">
       </div>
+      @error('password')
+                    <span class="error invalid-password text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
 
       <div class="login-form-group single-row">
         <div class="custom-check">
