@@ -445,6 +445,11 @@ body {
         <label for="email">Email <span class="required-star">*</span></label>
         <input name="email" type="text" placeholder="email@website.com" id="email">
       </div>
+      @error('email')
+                    <span class="error invalid-email text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
       <div class="login-form-group">
         <label for="pwd">Password <span class="required-star">*</span></label>
         <input name="password" autocomplete="off" type="password" placeholder="Minimum 8 characters" id="pwd">
