@@ -418,15 +418,15 @@ body {
         </svg></div>
       <h1>Login</h1>
 
-    
-
-      <div class="login-form-group">
       {{ Form::open(['route' => 'login', 'method' => 'post', 'id' => 'loginForm', 'class' => 'login-form']) }}
         @if (session('status'))
         <div class="mb-4 font-medium text-lg text-green-600 text-danger">
             {{ __('Your Account is disable,please contact your Administrator.') }}
         </div>
     @endif
+
+      <div class="login-form-group">
+    
         <label for="email">Email <span class="required-star">*</span></label>
         <input type="text" placeholder="email@website.com" id="email">
       </div>
@@ -451,9 +451,9 @@ body {
             </div>      </div>
 
       <a href="#" class="rounded-button login-cta">Login</a>
-      {{ Form::close() }}
+
     </div>
-   
+    {{ Form::close() }}
   </div>
   <div class="onboarding">
     <div class="swiper-container">
