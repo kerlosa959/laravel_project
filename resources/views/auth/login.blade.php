@@ -425,6 +425,7 @@ body {
         </div>
     @endif
 
+      <div class="login-form-group">
     
         <label for="email">Email <span class="required-star">*</span></label>
         <input type="text" placeholder="email@website.com" id="email">
@@ -452,8 +453,9 @@ body {
       <a href="#" class="rounded-button login-cta">Login</a>
 
     </div>
-    {{ Form::close() }}
+  
   </div>
+  {{ Form::close() }}
   <div class="onboarding">
     <div class="swiper-container">
       <div class="swiper-wrapper">
