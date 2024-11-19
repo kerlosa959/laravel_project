@@ -443,11 +443,11 @@ body {
       <div class="login-form-group">
     
         <label for="email">Email <span class="required-star">*</span></label>
-        <input type="text" placeholder="email@website.com" id="email">
+        <input name="email" type="text" placeholder="email@website.com" id="email">
       </div>
       <div class="login-form-group">
         <label for="pwd">Password <span class="required-star">*</span></label>
-        <input autocomplete="off" type="text" placeholder="Minimum 8 characters" id="pwd">
+        <input name="password" autocomplete="off" type="password" placeholder="Minimum 8 characters" id="pwd">
       </div>
 
       <div class="login-form-group single-row">
