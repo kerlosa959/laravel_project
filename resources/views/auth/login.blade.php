@@ -421,6 +421,12 @@ body {
     
 
       <div class="login-form-group">
+      {{ Form::open(['route' => 'login', 'method' => 'post', 'id' => 'loginForm', 'class' => 'login-form']) }}
+        @if (session('status'))
+        <div class="mb-4 font-medium text-lg text-green-600 text-danger">
+            {{ __('Your Account is disable,please contact your Administrator.') }}
+        </div>
+    @endif
         <label for="email">Email <span class="required-star">*</span></label>
         <input type="text" placeholder="email@website.com" id="email">
       </div>
@@ -434,8 +440,15 @@ body {
           <input autocomplete="off" type="checkbox" checked id="remember"><label for="remember">Remember me</label>
         </div>
 
-        <a href="#" class="link forgot-link">Forgot Password ?</a>
-      </div>
+        <div class="form-group mb-4">
+                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                   
+                    @if (Route::has('password.request'))
+                        <span><a href="{{ route('password.request',$lang) }}"
+                                tabindex="0">{{ __('Forgot your password?') }}</a></span>
+                    @endif
+                </div>
+            </div>      </div>
 
       <a href="#" class="rounded-button login-cta">Login</a>
 
