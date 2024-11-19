@@ -406,7 +406,6 @@ body {
 
 
 </style>
-@section('content')
 <!-- https://dribbble.com/shots/15392711-Dashboard-Login-Sign-Up/-->
 
 <div class="login-container">
@@ -451,7 +450,6 @@ body {
 
       <a href="#" class="rounded-button login-cta">Login</a>
 
-      <div class="register-div">Not registered yet? <a href="#" class="link create-account" -link>Create an account ?</a></div>
     </div>
 
   </div>
@@ -467,32 +465,14 @@ body {
             <p>Consistent quality and eperience across all platform and devices</p>
           </div>
         </div>
-        <div class="swiper-slide color-1">
-          <div class="slide-image">
-            <img src="https://ismailvtl-images-project.vercel.app/cloud-storage.png" loading="lazy" alt="" />
-          </div>
-          <div class="slide-content">
-            <h2>Turn your ideas into reality.</h2>
-            <p>Consistent quality and eperience across all platform and devices</p>
-          </div>
-        </div>
+     
 
-        <div class="swiper-slide color-1">
-          <div class="slide-image">
-            <img src="https://ismailvtl-images-project.vercel.app/cloud-storage.png" loading="lazy" alt="" />
-          </div>
-          <div class="slide-content">
-            <h2>Turn your ideas into reality.</h2>
-            <p>Consistent quality and eperience across all platform and devices</p>
-          </div>
-        </div>
-      </div>
+  
       <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
     </div>
   </div>
 </div>
-@endsection
 
 
 
