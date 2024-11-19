@@ -453,7 +453,7 @@ body {
       <a href="#" class="rounded-button login-cta">Login</a>
 
     </div>
-
+    {{ Form::close() }}
   </div>
   <div class="onboarding">
     <div class="swiper-container">
