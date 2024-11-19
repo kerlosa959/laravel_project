@@ -404,7 +404,9 @@ body {
   }
 }
 
-
+.AppFormLeft {
+    display:none;
+}
 </style>
 <!-- https://dribbble.com/shots/15392711-Dashboard-Login-Sign-Up/-->
 
