@@ -465,7 +465,7 @@ body {
                 </div>
             </div>      </div>
 
-      <a href="#" class="rounded-button login-cta">Login</a>
+      <input type="submit" name="login" class="rounded-button login-cta" value="Login" />
 
     </div>
   
