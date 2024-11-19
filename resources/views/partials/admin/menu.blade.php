@@ -56,7 +56,7 @@
                         Gate::check('show account dashboard') ||
                         Gate::check('show crm dashboard') ||
                         Gate::check('show pos dashboard'))
-                        <?php   <li
+                        <?php /* ?  <li
                         class="dash-item dash-hasmenu
                                 {{ Request::segment(1) == null ||
                                 Request::segment(1) == 'account-dashboard' ||
@@ -166,7 +166,7 @@
 
                         </ul>
                     </li>
-                    <?php ?>
+                    <?php */ ?>
                 @endif
                 <!--------------------- End Dashboard ----------------------------------->
 
