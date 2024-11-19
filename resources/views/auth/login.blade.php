@@ -425,7 +425,6 @@ body {
         </div>
     @endif
 
-      <div class="login-form-group">
     
         <label for="email">Email <span class="required-star">*</span></label>
         <input type="text" placeholder="email@website.com" id="email">
