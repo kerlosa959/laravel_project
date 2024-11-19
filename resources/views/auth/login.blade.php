@@ -407,6 +407,17 @@ body {
 .AppFormLeft {
     display:none;
 }
+.login-container .login-form {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
 </style>
 <!-- https://dribbble.com/shots/15392711-Dashboard-Login-Sign-Up/-->
 
