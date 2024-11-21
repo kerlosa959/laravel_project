@@ -93,47 +93,6 @@
         </div>
     </div>
 </div>
-<form method="GET" action="{{ route('labours.search') }}">
-    <label for="search">Search Labour:</label>
-    <input type="text" name="search" id="search" placeholder="Enter name or mobile number" required>
-    <button type="submit">Search</button>
-</form>
-
-<!-- Table to Display Search Results -->
-@if(isset($labours))
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Mobile Number</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($labours as $labour)
-                <tr>
-                    <td>{{ $labour->name }}</td>
-                    <td>{{ $labour->mobile }}</td>
-                    <td>
-                        <form method="POST" action="{{ route('labours.add', $labour->id) }}">
-                            @csrf
-                            <button type="submit">Add</button>
-                        </form>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-@endif
-
-<!-- Display Added Labour Details -->
-@if(isset($selectedLabour))
-    <h2>Labour Details</h2>
-    <p>Name: {{ $selectedLabour->name }}</p>
-    <p>Mobile: {{ $selectedLabour->mobile }}</p>
-    <!-- Add more fields as needed -->
-@endif
-
 <div class="modal-footer">
     <input type="hidden" name='id' value="{{$projectworkerrequest->id}}" >
     <!-- @if( \Auth::user()->type=='company' && $projectworkerrequest->status==1)
