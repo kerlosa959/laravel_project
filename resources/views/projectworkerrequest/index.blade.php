@@ -138,7 +138,7 @@
         }
     </script>
 @endpush
-<form method="GET" action="{{ route('labours.search') }}">
+<form method="GET" action="">
     <label for="search">Search Labour:</label>
     <input type="text" name="search" id="search" placeholder="Enter name or mobile number" required>
     <button type="submit">Search</button>
