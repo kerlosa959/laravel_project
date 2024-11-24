@@ -9,67 +9,59 @@
     <li class="breadcrumb-item">{{__('Labours')}}</li>
 @endsection
 
+
 @section('action-btn')
     <div class="float-end">
     @can('create department')
-        <a href="#" data-url="{{ route('labour.create') }}" data-ajax-popup="true" data-title="{{__('Add Labour')}}" data-bs-toggle="tooltip" title="{{__('Create')}}" class="btn btn-sm btn-primary">
-            <i class="ti ti-plus"></i>
-        </a>
-    @endcan
+            <a href="#" data-url="{{ route('labour.create') }}" data-ajax-popup="true" data-title="{{__('Add Labour')}}" data-bs-toggle="tooltip" title="{{__('Create')}}"  class="btn btn-sm btn-primary">
+                <i class="ti ti-plus"></i>
+            </a>
+
+        @endcan
     </div>
 @endsection
 
 @section('content')
     <div class="row">
-        <!-- Navigation bar -->
+       
         <div class="col-12">
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </nav>
-        </div>
-        
-        <!-- Table -->
-        <div class="col-12 mt-3">
             <div class="card">
-                <div class="card-body table-border-style">
+            <div class="card-body table-border-style">
                     <div class="table-responsive">
-                        <table class="table datatable">
+                    <table class="table datatable">
                             <thead>
-                                <tr>
-                                    <th>{{__('Name')}}</th>
-                                    <th>{{__('Phone')}}</th>
-                                    <th>{{__('Department')}}</th>
-                                    <th width="200px">{{__('Action')}}</th>
-                                </tr>
+                            <tr>
+                                <th>{{__('Name')}}</th>
+                                <th>{{__('Phone')}}</th>
+                                <th>{{__('Department')}}</th>
+                                <th width="200px">{{__('Action')}}</th>
+                            </tr>
                             </thead>
                             <tbody class="font-style">
                             @foreach ($labours as $labour)
                                 <tr>
-                                    <td>{{ $labour->name }}</td>
-                                    <td>{{ $labour->phone }}</td>
-                                    <td>{{ !empty($labour->department_id) ? @$labour->department->name : '' }}</td>
+                                <td>{{ $labour->name }}</td>
+                                <td>{{ $labour->phone }}</td>
+                                    <td>{{ !empty($labour->department_id)?@$labour->department->name:'' }}</td>
+                                    
+
                                     <td class="Action">
                                         <span>
                                             @can('edit department')
                                             <div class="action-btn bg-primary ms-2">
-                                                <a href="#" data-url="{{ URL::to('labour/'.$labour->id.'/edit') }}" data-ajax-popup="true" data-title="{{__('Edit Labour')}}" class="mx-3 btn btn-sm d-inline-flex align-items-center" data-bs-toggle="tooltip" title="{{__('Edit')}}">
-                                                    <i class="ti ti-pencil text-white"></i>
-                                                </a>
+
+                                                <a href="#" data-url="{{ URL::to('labour/'.$labour->id.'/edit') }}"  data-ajax-popup="true" data-title="{{__('Edit Labour')}}" class="mx-3 btn btn-sm d-inline-flex align-items-center" data-bs-toggle="tooltip" title="{{__('Edit')}}" data-original-title="{{__('Edit')}}">
+                                                    <i class="ti ti-pencil text-white"></i></a>
                                             </div>
-                                            @endcan
+                                                @endcan
                                             @can('delete department')
-                                            <div class="action-btn bg-danger ms-2">
-                                                {!! Form::open(['method' => 'DELETE', 'route' => ['labour.destroy', $labour->id], 'id' => 'delete-form-'.$labour->id]) !!}
-                                                <a href="#" class="mx-3 btn btn-sm align-items-center bs-pass-para" data-bs-toggle="tooltip" title="{{__('Delete')}}" data-confirm="{{__('Are You Sure?').'|'.__('This action cannot be undone. Do you want to continue?')}}" data-confirm-yes="document.getElementById('delete-form-{{$labour->id}}').submit();">
-                                                    <i class="ti ti-trash text-white"></i>
-                                                </a>
+                                                    <div class="action-btn bg-danger ms-2">
+                                                        {!! Form::open(['method' => 'DELETE', 'route' => ['labour.destroy', $labour->id],'id'=>'delete-form-'.$labour->id]) !!}
+
+
+                                                <a href="#" class="mx-3 btn btn-sm  align-items-center bs-pass-para" data-bs-toggle="tooltip" title="{{__('Delete')}}" data-original-title="{{__('Delete')}}" data-confirm="{{__('Are You Sure?').'|'.__('This action can not be undone. Do you want to continue?')}}" data-confirm-yes="document.getElementById('delete-form-{{$labour->id}}').submit();"><i class="ti ti-trash text-white"></i></a>
                                                 {!! Form::close() !!}
-                                            </div>
+                                                    </div>
                                             @endcan
                                         </span>
                                     </td>
