@@ -6,6 +6,7 @@ use App\Models\Labours;
 use App\Models\LabourDepartment;
 use App\Models\ProjectTask;
 use App\Models\Milestone;
+use App\Models\Labour;
 use Illuminate\Http\Request;
 
 class LabourController extends Controller
@@ -178,4 +179,21 @@ class LabourController extends Controller
         
     }
     
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $labours = Labour::where('name', 'LIKE', "%$search%")
+            ->orWhere('mobile', 'LIKE', "%$search%")
+            ->get();
+
+        return view('labours.index', compact('labours'));
+    }
+
+    // Add labour and display their details
+    public function add($id)
+    {
+        $selectedLabour = Labour::findOrFail($id);
+
+        return view('labours.index', compact('selectedLabour'));
+    }
 }

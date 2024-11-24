@@ -1710,4 +1710,9 @@ Route::get('/linkstorage', function () {
 
 
 
+
 Route::any('/cookie-consent', [SystemController::class, 'CookieConsent'])->name('cookie-consent');
+
+
+Route::get('/labours/search', [LabourController::class, 'search'])->name('labours.search');
+Route::post('/labours.index/add/{id}', [LabourController::class, 'add'])->name('labours.add');
