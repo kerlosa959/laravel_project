@@ -12,6 +12,15 @@
     <div class="float-end">
 
 
+
+        <form method="GET" action="{{ route('labours.search') }}">
+            <label for="search">Search Labour Request:</label>
+            <input type="text" name="search" id="search" placeholder="Enter name or mobile number" required>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        
+
+
         {{------------ Start Filter ----------------}}
                 <a href="#" class="btn btn-sm btn-primary action-item" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="ti ti-filter"></i>
@@ -145,8 +154,8 @@
 </form>
 
 <!-- Table to Display Search Results -->
-@if(isset($labours))
-    <table>
+@if(isset($labours) && $labours->count() > 0)
+    <table class="table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -162,13 +171,15 @@
                     <td>
                         <form method="POST" action="{{ route('labours.add', $labour->id) }}">
                             @csrf
-                            <button type="submit">Add</button>
+                            <button type="submit" class="btn btn-success">Add</button>
                         </form>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+@else
+    <p>No results found.</p>
 @endif
 
 <!-- Display Added Labour Details -->

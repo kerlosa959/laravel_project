@@ -75,10 +75,15 @@ class LabourController extends Controller
         }
     }
 
-    public function show(LabourLabour $department)
-    {
-        return redirect()->route('labour.index');
-    }
+    public function show($id)
+{
+    $selectedLabour = Labour::find($id);
+
+    return view('labours.index', [
+        'selectedLabour' => $selectedLabour,
+    ]);
+}
+
 
     public function edit($id)
     {
@@ -181,13 +186,18 @@ class LabourController extends Controller
     
     public function search(Request $request)
     {
-        $search = $request->get('search');
-        $labours = Labour::where('name', 'LIKE', "%$search%")
-            ->orWhere('mobile', 'LIKE', "%$search%")
-            ->get();
-
-        return view('labours.index', compact('labours'));
+        $query = $request->input('search');
+    
+        // Fetch matching labour requests
+        $labours = Labour::where('name', 'like', "%{$query}%")
+                    ->orWhere('mobile', 'like', "%{$query}%")
+                    ->get();
+    
+        return view('labours.index', [
+            'labours' => $labours,
+        ]);
     }
+    
 
     // Add labour and display their details
     public function add($id)

@@ -1715,4 +1715,5 @@ Route::any('/cookie-consent', [SystemController::class, 'CookieConsent'])->name(
 
 
 Route::get('/labours/search', [LabourController::class, 'search'])->name('labours.search');
-
+Route::post('/labours/{id}/add', [LabourController::class, 'add'])->name('labours.add');
+Route::get('/labours/{id}', [LabourController::class, 'show'])->name('labours.show');
