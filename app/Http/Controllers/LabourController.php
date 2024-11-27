@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Labours;
+use App\Models\Labour;
 use App\Models\LabourDepartment;
 use App\Models\ProjectTask;
 use App\Models\Milestone;
-use App\Models\Labour;
 use Illuminate\Http\Request;
+
 
 class LabourController extends Controller
 {
@@ -15,7 +15,7 @@ class LabourController extends Controller
     {
         if(\Auth::user()->can('manage department'))
         {
-            $labours = Labours::get();
+            $labours = Labour::all();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ::get();
 
             return view('labour.index', compact('labours'));
         }
@@ -58,7 +58,7 @@ class LabourController extends Controller
                 return redirect()->back()->with('error', $messages->first());
             }
 
-            $department             = new Labours();
+            $department             = new Labour                                                                                                                                                                                                                                                                                                                                                                                        ();
             
             
             $department->name       = $request->name;
@@ -90,7 +90,7 @@ class LabourController extends Controller
         if(\Auth::user()->can('edit department'))
         {
                 $departments = LabourDepartment::get()->pluck('name', 'id');
-                $labour = Labours::where('id',$id)->first();
+                $labour = Labour::where('id',$id)->first();
                 return view('labour.edit', compact('labour','departments'));
             
         }
@@ -121,7 +121,7 @@ class LabourController extends Controller
                     return redirect()->back()->with('error', $messages->first());
                 }
 
-                $department = Labours::where('id',$id)->first();
+                $department = Labour::where('id',$id)->first();
                 $department->name      = $request->name;
                 $department->phone      = $request->phone;
                 $department->department_id      = $request->department_id;
@@ -146,7 +146,7 @@ class LabourController extends Controller
         {
             if(true)
             {
-                $department = Labours::where('id',$id)->first();
+                $department = Labour::where('id',$id)->first();
                 $department->delete();
 
                 return redirect()->route('labour.index')->with('success', __('Labour successfully deleted.'));
@@ -156,15 +156,12 @@ class LabourController extends Controller
                 return redirect()->back()->with('error', __('Permission denied.'));
             }
         }
-        else
-        {
-            return redirect()->back()->with('error', __('Permission denied.'));
-        }
+        
     }
 
     public function fetchLabourByDepartment(Request $request)
     {
-        $data['agents'] = Labours::where('department_id',$request->id)->get()->pluck('name','id');
+        $data['agents'] = Labour    ::where('department_id',$request->id)->get()->pluck('name','id');
         
         return response()->json($data);
         
@@ -190,7 +187,7 @@ class LabourController extends Controller
     
         // Fetch matching labour requests
         $labours = Labour::where('name', 'like', "%{$query}%")
-                    ->orWhere('mobile', 'like', "%{$query}%")
+                    ->orWhere('phone', 'like', "%{$query}%")
                     ->get();
     
         return view('labours.index', [

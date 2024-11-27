@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Labours extends Model
+class Labour extends Model
 {
     protected $fillable = [
         'name',
