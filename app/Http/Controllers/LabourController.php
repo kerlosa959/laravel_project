@@ -190,7 +190,7 @@ class LabourController extends Controller
                     ->orWhere('phone', 'like', "%{$query}%")
                     ->get();
     
-        return view('labours.index', [
+        return view('labour.index', [
             'labours' => $labours,
         ]);
     }
