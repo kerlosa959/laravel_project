@@ -1,0 +1,9 @@
+[2023-12-12 04:31:15] local.INFO: {"code":206,"message":"Invalid currency code","trace":"PMNT0705.6577E213.0000239F","success":false,"payment_url":null}  
+[2023-12-12 04:32:18] local.INFO: {"code":206,"message":"Invalid currency code","trace":"PMNT0705.6577E252.000023A0","success":false,"payment_url":null}  
+[2023-12-12 04:32:25] local.INFO: {"code":206,"message":"Invalid currency code","trace":"PMNT0706.6577E259.00002395","success":false,"payment_url":null}  
+[2023-12-12 04:34:28] local.INFO: {"code":206,"message":"Invalid currency code","trace":"PMNT0706.6577E2D4.00002397","success":false,"payment_url":null}  
+[2023-12-12 04:35:32] local.INFO: {"code":206,"message":"Invalid currency code","trace":"PMNT0706.6577E314.00002398","success":false,"payment_url":null}  
+[2023-12-12 04:36:38] local.INFO: {"code":206,"message":"Invalid currency code","trace":"PMNT0705.6577E356.000023A4","success":false,"payment_url":null}  
+[2023-12-12 04:37:03] local.INFO: {"code":206,"message":"Invalid currency code","trace":"PMNT0705.6577E36E.000023A5","success":false,"payment_url":null}  
+[2023-12-12 04:37:40] local.INFO: {"code":206,"message":"Invalid currency code","trace":"PMNT0706.6577E394.0000239A","success":false,"payment_url":null}  
+[2023-12-12 04:37:46] local.INFO: {"code":206,"message":"Invalid currency code","trace":"PMNT0705.6577E39A.000023A6","success":false,"payment_url":null}  
